@@ -1,3 +1,5 @@
+# Public example only.
+# Use your own domain, your own ACME email, and your own DNS API credentials.
 acme:
   enabled: true
   default_ca: letsencrypt

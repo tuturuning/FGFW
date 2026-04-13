@@ -52,6 +52,16 @@ Before a real deployment, adjust these files:
 - `deploy/config/outbounds.yaml`
 - `deploy/config/routing.yaml`
 
+## Certificate rule
+
+Each user must apply for certificates with their own:
+- domain
+- ACME email
+- DNS API credentials when using DNS challenge
+
+The public repo only provides examples.
+It does not provide shared certs, shared ACME accounts, or reusable production values.
+
 ## Main entry points
 
 ```bash
