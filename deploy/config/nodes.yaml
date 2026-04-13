@@ -1,0 +1,79 @@
+nodes:
+- id: reality-main-demo
+  enabled: true
+  group: default
+  target: demo-sg
+  core: xray
+  protocol: vless
+  transport: tcp
+  security: reality
+  xtls_flow: xtls-rprx-vision
+  listen:
+    stack: dual
+    port: 443
+  connect:
+    host: edge.example.com
+    sni:
+  auth:
+    uuid_ref: VLESS_REALITY_MAIN_UUID
+  reality:
+    mode: vision
+    target_host: www.microsoft.com
+    target_port: 443
+    server_names:
+    - www.microsoft.com
+    short_ids:
+    - 0123abcd
+    spider_x_pattern: "/?ed=2048"
+    key_ref:
+      private: REALITY_MAIN_PRIVATE_KEY
+      public: REALITY_MAIN_PUBLIC_KEY
+  export:
+    enabled: true
+    groups: [default, reality-only]
+    clients: [v2rayn, clash, shadowrocket]
+- id: hy2-main-demo
+  enabled: true
+  group: default
+  target: demo-sg
+  core: sing-box
+  protocol: hysteria2
+  transport: quic
+  security: tls
+  listen:
+    stack: dual
+    port: 8443
+  connect:
+    host: edge.example.com
+    sni: edge.example.com
+  tls:
+    cert_mode: acme
+    alpn: [h3]
+    cert_ref:
+      fullchain: CERT_HY2_FULLCHAIN
+      privkey: CERT_HY2_PRIVKEY
+  auth:
+    password_ref: HY2_MAIN_PASSWORD
+  export:
+    enabled: true
+    groups: [default, udp-only]
+    clients: [v2rayn, clash, shadowrocket]
+- id: ss2022-main-demo
+  enabled: true
+  group: default
+  target: demo-sg
+  core: sing-box
+  protocol: ss2022
+  transport: tcpudp
+  listen:
+    stack: dual
+    port: 24444
+  connect:
+    host: edge.example.com
+  auth:
+    method: 2022-blake3-aes-128-gcm
+    password_ref: SS2022_MAIN_PASSWORD
+  export:
+    enabled: true
+    groups: [default, fallback-only]
+    clients: [v2rayn, clash, shadowrocket]

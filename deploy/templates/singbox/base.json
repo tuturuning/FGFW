@@ -1,0 +1,12 @@
+{
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
+  "inbounds": [],
+  "outbounds": [],
+  "route": {
+    "rules": []
+  }
+}
+

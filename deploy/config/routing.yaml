@@ -1,0 +1,41 @@
+routing:
+  defaults:
+    final_outbound: direct
+    block_bittorrent: true
+    block_udp_443: false
+
+  rules:
+    - id: api-internal
+      enabled: true
+      match:
+        inbound_tags: [api]
+      action:
+        outbound: direct
+
+    - id: ai-openai
+      enabled: true
+      match:
+        domain_group: openai
+      action:
+        outbound: residential-auto
+
+    - id: ai-anthropic
+      enabled: true
+      match:
+        domain_group: anthropic
+      action:
+        outbound: residential-auto
+
+    - id: ai-google
+      enabled: true
+      match:
+        domain_group: google-ai
+      action:
+        outbound: residential-auto
+
+    - id: google
+      enabled: true
+      match:
+        domain_group: google
+      action:
+        outbound: vps-v4

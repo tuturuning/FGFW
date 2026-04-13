@@ -1,0 +1,21 @@
+exports:
+  base_dir: /opt/myproxy/output
+
+  files:
+    links: links.txt
+    v2rayn: nodes-v2rayn.txt
+    shadowrocket: nodes-shadowrocket.txt
+    clash_redir: clash-verge-redir-host.yaml
+    clash_fakeip: clash-verge-fake-ip.yaml
+
+  groups:
+    - id: default
+      include_node_groups: [default]
+    - id: reality-only
+      include_node_groups: [reality-only]
+    - id: udp-only
+      include_node_groups: [udp-only]
+
+  external_sub_urls:
+    - id: worker-default
+      template: https://worker.example/sub?group=default

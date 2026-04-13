@@ -1,0 +1,37 @@
+dns:
+  servers:
+    - id: dns-main
+      type: doh
+      address: https://1.1.1.1/dns-query
+
+    - id: dns-cn
+      type: doh
+      address: https://223.5.5.5/dns-query
+
+    - id: dns-fallback
+      type: doh
+      address: https://8.8.8.8/dns-query
+
+  policies:
+    global:
+      server: dns-main
+      strategy: use-ip
+
+    google:
+      server: dns-main
+      strategy: prefer-ipv4
+
+    openai:
+      server: dns-main
+      strategy: prefer-ipv4
+
+    domestic-cn:
+      server: dns-cn
+      strategy: prefer-ipv4
+
+  clash_export:
+    redir_host:
+      enhanced_mode: redir-host
+    fake_ip:
+      enhanced_mode: fake-ip
+      fake_ip_range: 198.18.0.1/16

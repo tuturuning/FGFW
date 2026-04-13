@@ -1,0 +1,17 @@
+targets:
+  - id: demo-sg
+    name: demo-singapore
+    region: sg
+    role: clean-host
+    ssh_host: 1.2.3.4
+    ssh_user: root
+    ssh_auth: key
+    ssh_key_path: /path/to/your/key.pem
+    public_ipv4: 1.2.3.4
+    public_ipv6: 2400:cb00::1234
+    stack: dual
+    preserve:
+      ports: [22]
+      services: []
+      paths: []
+      notes: []

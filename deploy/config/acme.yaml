@@ -1,0 +1,13 @@
+acme:
+  enabled: true
+  default_ca: letsencrypt
+  default_challenge: standalone
+  default_key_type: ec-256
+  install_dir: /root/.acme.sh
+  standalone_port: 80
+  renew_reload_mode: restart
+
+  targets:
+    demo-sg:
+      challenge: standalone
+      standalone_port: 80

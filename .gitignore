@@ -1,0 +1,12 @@
+.DS_Store
+runtime/
+output/
+backups/
+logs/
+state/
+deploy/config/secrets.env
+clash-verge-*.yaml
+node-notes.md
+*.log
+*.bak
+*.bak_*

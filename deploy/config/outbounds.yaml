@@ -1,0 +1,44 @@
+outbounds:
+  - id: direct
+    role: direct
+    type: direct
+    enabled: true
+
+  - id: blocked
+    role: blocked
+    type: block
+    enabled: true
+
+  - id: vps-v4
+    role: vps-v4
+    type: direct
+    enabled: true
+    stack: ipv4
+
+  - id: vps-v6
+    role: vps-v6
+    type: direct
+    enabled: true
+    stack: ipv6
+
+  - id: res-us-static
+    role: residential-static
+    type: socks5
+    enabled: false
+    server: 127.0.0.1
+    port: 40000
+    auth_ref:
+      user: RES_US_STATIC_USER
+      pass: RES_US_STATIC_PASS
+    udp: true
+    stack: ipv4
+    domain_resolver: dns-main
+    export_tag: residential-static
+
+outbound_groups:
+  - id: residential-auto
+    type: urltest
+    members:
+      - res-us-static
+    url: https://cp.cloudflare.com/generate_204
+    interval: 300
